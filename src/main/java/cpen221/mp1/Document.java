@@ -2,7 +2,6 @@ package cpen221.mp1;
 
 import cpen221.mp1.exceptions.NoSuitableSentenceException;
 import cpen221.mp1.sentiments.SentimentAnalysis;
-import com.google.cloud.language.v1.Sentiment;
 
 import java.net.URL;
 import java.io.BufferedReader;

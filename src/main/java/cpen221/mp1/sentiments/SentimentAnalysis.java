@@ -4,12 +4,11 @@ import com.google.cloud.language.v1.AnalyzeSentimentResponse;
 import com.google.cloud.language.v1.Document.Type;
 import com.google.cloud.language.v1.LanguageServiceClient;
 import com.google.cloud.language.v1.Sentiment;
-import cpen221.mp1.exceptions.*;
+import cpen221.mp1.exceptions.NoSuitableSentenceException;
 import cpen221.mp1.Document;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SentimentAnalysis {
@@ -61,10 +60,12 @@ public class SentimentAnalysis {
         Map<String, Sentiment> sentimentMap = generateSentimentScores(document);
         String mostPos = null;
         float largestScore = 0;
+
         for (int i = 0; i < sentimentMap.size(); i++) {
             int sentenceNum = i + 1;
             Sentiment currentSent = sentimentMap.get(document.getSentence(sentenceNum));
             float currentScore = currentSent.getScore();
+
             if (currentScore >= THRESHOLD) {
                 if (currentScore >= largestScore) {
                     mostPos = document.getSentence(sentenceNum);
@@ -87,10 +88,12 @@ public class SentimentAnalysis {
         Map<String, Sentiment> sentimentMap = generateSentimentScores(document);
         String mostNeg = null;
         float smallestScore = 0;
+
         for (int i = 0; i < sentimentMap.size(); i++) {
             int sentenceNum = i + 1;
             Sentiment currentSent = sentimentMap.get(document.getSentence(sentenceNum));
             float currentScore = currentSent.getScore();
+
             if (currentScore <= -THRESHOLD) {
                 if (currentScore <= smallestScore) {
                     mostNeg = document.getSentence(sentenceNum);
@@ -111,8 +114,10 @@ public class SentimentAnalysis {
      */
     public static HashMap<String, Sentiment> generateSentimentScores(Document document) {
         HashMap<String, Sentiment> output = new HashMap<>();
+
         for (int i=1; i<=document.numSentences(); i++) {
             String sentence = document.getSentence(i);
+            
             try (LanguageServiceClient language = LanguageServiceClient.create()) {
 
                 com.google.cloud.language.v1.Document doc
