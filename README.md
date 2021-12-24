@@ -12,3 +12,4 @@ This was a [mini-project](MP1-Analyzing-Text-Documents-9765295da59046c79767d68ae
   - All methods in GroupingDocuments class
   - Created DocPair class as a helper datatype for GroupingDocuments
 
+A more detailed account of contributions exist in the form of the three CONTRIB-(github_username).md files
