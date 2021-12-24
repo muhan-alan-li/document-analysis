@@ -1,6 +1,6 @@
 # Document-analysis Project
 
-This was a [mini-project](MP1-Analyzing-Text-Documents-9765295da59046c79767d68ae85ebb71) done for a my software construction course at UBC, I've listed my contributions to the project below
+This was the first of three miniprojects done for a my software construction course at UBC, I've listed my contributions to the project below
 
 - **Setting up Document Object**
   - Both constructor methods
